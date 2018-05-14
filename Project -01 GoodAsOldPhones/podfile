@@ -1,0 +1,8 @@
+platform:'ios', '8.0'
+
+target "Project 01 - GoodAsOldPhones" do
+
+pod "Masonry"
+
+end
+
