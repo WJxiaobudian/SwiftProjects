@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   version = "1.3">
+   <BuildAction>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForRunning = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A084FCB220A52FFA00E92E79"
+               BuildableName = "Project -04 Artistry.app"
+               BlueprintName = "Project -04 Artistry"
+               ReferencedContainer = "container:Project -04 Artistry.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <LaunchAction
+      useCustomWorkingDirectory = "NO"
+      buildConfiguration = "Debug"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "A084FCB220A52FFA00E92E79"
+            BuildableName = "Project -04 Artistry.app"
+            BlueprintName = "Project -04 Artistry"
+            ReferencedContainer = "container:Project -04 Artistry.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+</Scheme>
