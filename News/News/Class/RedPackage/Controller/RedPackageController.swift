@@ -2,8 +2,8 @@
 //  RedPackageController.swift
 //  News
 //
-//  Created by 王洁 on 2018/5/16.
-//  Copyright © 2018年 王洁. All rights reserved.
+//  Created by WJ on 2018/5/16.
+//  Copyright © 2018年 WJ. All rights reserved.
 //
 
 import UIKit

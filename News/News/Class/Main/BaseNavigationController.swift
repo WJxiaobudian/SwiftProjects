@@ -2,16 +2,20 @@
 //  BaseNavigationController.swift
 //  News
 //
-//  Created by 王洁 on 2018/5/16.
-//  Copyright © 2018年 王洁. All rights reserved.
+//  Created by WJ on 2018/5/16.
+//  Copyright © 2018年 WJ. All rights reserved.
 //
 
 import UIKit
 import SwiftTheme
-class BaseNavigationController: UINavigationController {
 
+class BaseNavigationController: UINavigationController, UINavigationControllerDelegate {
+    var popDelegate:UIGestureRecognizerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.popDelegate = self.interactivePopGestureRecognizer?.delegate
+        self.delegate = self
         let navigationBar = UINavigationBar.appearance()
         navigationBar.theme_tintColor = "colors.black"
         navigationBar.setBackgroundImage(UIImage(named: "navigation_background" + (UserDefaults.standard.bool(forKey: IsNight) ? "_night" : "")), for: .default)
@@ -23,6 +27,7 @@ class BaseNavigationController: UINavigationController {
     @objc func receiveDayOrNightButtonClicked(notification: Notification) {
         // 设置为夜间/日间
         navigationBar.setBackgroundImage(UIImage(named: "navigation_background" + (notification.object as! Bool ? "_night" : "")), for: .default)
+        
     }
     
     // 拦截 push 操作
@@ -39,6 +44,14 @@ class BaseNavigationController: UINavigationController {
         popViewController(animated: true)
     }
     
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        if viewController == self.viewControllers[0] {
+            self.interactivePopGestureRecognizer?.delegate = self.popDelegate
+        } else {
+            self.interactivePopGestureRecognizer?.delegate = nil
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

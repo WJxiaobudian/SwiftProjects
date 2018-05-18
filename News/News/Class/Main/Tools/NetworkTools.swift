@@ -2,8 +2,8 @@
 //  NetworkTools.swift
 //  News
 //
-//  Created by 王洁 on 2018/5/16.
-//  Copyright © 2018年 王洁. All rights reserved.
+//  Created by WJ on 2018/5/16.
+//  Copyright © 2018年 WJ. All rights reserved.
 //
 
 import Foundation
@@ -19,6 +19,8 @@ protocol NetworkToolProtocol {
     static func loadHomeSearchSuggestInfo(completionHandler: @escaping (_ searchSuggest:String) -> ())
     // 获取首页、视频、小视频的新闻列表数据
 //    static func loadApiNewsFeeds(category:)
+     static func loadMyCellData(completionHandler: @escaping (_ sections: [[MyCellModel]]) -> ())
+    static func loadMyConcern(completionHandler: @escaping (_ concerns: [MyConcern]) -> ())
 }
 
 extension NetworkToolProtocol {
@@ -88,6 +90,56 @@ extension NetworkToolProtocol {
                     completionHandler(data.compactMap({
                         HomeNewsTitle.deserialize(from: ($0 as! [String: Any]))
                     }))
+                }
+            }
+        }
+    }
+    
+    /// 我的界面 cell 的数据
+    /// - parameter completionHandler: 返回我的 cell 的数据
+    /// - parameter sections: 我的界面 cell 的数据
+    static func loadMyCellData(completionHandler: @escaping (_ sections: [[MyCellModel]]) -> ()) {
+        let url = BASE_URL + "/user/tab/tabs/?"
+        let params = ["device_id": Device_id]
+        
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            // 网络错误的提示信息
+            guard response.result.isSuccess else { return }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["message"] == "success" else { return }
+                var mySections = [[MyCellModel]]()
+                mySections.append([MyCellModel.deserialize(from: "{\"text\":\"我的关注\",\"grey_text\":\"\"}")!])
+                if let data = json["data"].dictionary {
+                    print("\(data)")
+                    if let sections = data["sections"]?.arrayObject {
+                        mySections += sections.compactMap({ item in
+                            (item as! [Any]).compactMap({ MyCellModel.deserialize(from: $0 as? Dictionary) })
+                        })
+                        completionHandler(mySections)
+                    }
+                }
+            }
+        }
+    }
+    
+    /// 我的关注数据
+    /// - parameter completionHandler: 返回我的关注数据
+    /// - parameter concerns: 我的界面我的关注数组
+    static func loadMyConcern(completionHandler: @escaping (_ concerns: [MyConcern]) -> ()) {
+        
+        let url = BASE_URL + "/concern/v2/follow/my_follow/?"
+        let params = ["device_id": Device_id]
+        
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            // 网络错误的提示信息
+            guard response.result.isSuccess else { return }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["message"] == "success" else { return }
+                if let datas = json["data"].arrayObject {
+                    print("\(datas)")
+                    completionHandler(datas.compactMap({ MyConcern.deserialize(from: $0 as? Dictionary) }))
                 }
             }
         }

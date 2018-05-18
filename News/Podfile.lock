@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.7.2)
   - HandyJSON (4.1.1)
   - IBAnimatable (4.2.0)
+  - Kingfisher (4.7.0)
   - Masonry (1.1.0)
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - Alamofire
   - HandyJSON
   - IBAnimatable
+  - Kingfisher
   - Masonry
   - RxCocoa
   - RxSwift
@@ -30,6 +32,7 @@ SPEC REPOS:
     - Alamofire
     - HandyJSON
     - IBAnimatable
+    - Kingfisher
     - Masonry
     - RxCocoa
     - RxSwift
@@ -42,6 +45,7 @@ SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   HandyJSON: 3a3de917c4118767ffe41c29b5acba23409649f4
   IBAnimatable: d9d20f1c627ee97c736c55f791da9c83f6bd1bec
+  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
@@ -50,6 +54,6 @@ SPEC CHECKSUMS:
   SwiftTheme: 36d71c4eed4b2c401c782cf036e4586c749a8173
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: e85e64955bac64baf3edd6329d19ad441f48a02c
+PODFILE CHECKSUM: 857a179b74172031ee80a8efe2f405cf72b72f2e
 
 COCOAPODS: 1.5.0
