@@ -7,6 +7,24 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+
+// MARK: - 自定义一个可以接受上层 tableView 手势的 tableView
+class UserDetailTableView: UITableView, UIGestureRecognizerDelegate {
+    // 底层 tableView 实现这个 UIGestureRecognizerDelegate 代理方法，就可以响应上层 tableView 的滑动手势，
+    // otherGestureRecognizer 就是它上层的 view 持有的手势，这里的话，上层应该是 scrollView 和 顶层 tabelview
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        // 保证其他手势的存在
+        guard let otherView = otherGestureRecognizer.view else { return false }
+        // 如果其他手势的 view 是 UIScrollView，就不能让 UserDetailTableView 响应
+        if otherView.isMember(of: UIScrollView.self) { return false }
+        // 其他手势是 tableView 的 pan 手势，就让他响应
+        let isPan = gestureRecognizer.isKind(of: UIPanGestureRecognizer.self)
+        if isPan && otherView.isKind(of: UIScrollView.self) { return true }
+        return false
+    }
+}
 
 class UserDetailController: UITableViewController {
     var userId: Int = 0

@@ -23,7 +23,8 @@ class NoLoginHeaderView: UIView {
     // 新浪按钮
     var sinaButton = UIButton()
     // 更多登陆方式按钮
-    var moreLoginButton = AnimatableButton()
+    var moreLoginButton = UIButton(type: .custom)
+    var moreLoginButtonClick: (() -> ())?
     var bottomView = UIView()
     // 收藏按钮
     var frvoriteButton = UIButton()
@@ -41,6 +42,7 @@ class NoLoginHeaderView: UIView {
     
     private func setHeaderView() {
         bgImageView.image = UIImage(named: "wallpaper_profile_night")
+        bgImageView.isUserInteractionEnabled = true
         self.addSubview(bgImageView)
         bgImageView.mas_makeConstraints { (make:MASConstraintMaker!) in
             make.top.equalTo()(IsIphoneX ? -44 : -20)
@@ -71,12 +73,12 @@ class NoLoginHeaderView: UIView {
             make.left.right().equalTo()(self)
             make.bottom.equalTo()(self)
         }
-        
+
         moreLoginButton.layer.cornerRadius  = 15
         moreLoginButton.layer.masksToBounds = true
         moreLoginButton.backgroundColor = UIColor.black
-        moreLoginButton.isUserInteractionEnabled = true
         moreLoginButton .setTitle("  更多登陆方式>  ", for: .normal)
+        moreLoginButton.addTarget(self, action: #selector(moreButtonClick), for: .touchUpInside)
         moreLoginButton .setTitleColor(UIColor.white, for: .normal)
         bgImageView.addSubview(moreLoginButton)
         moreLoginButton.mas_makeConstraints { (make:MASConstraintMaker!) in
@@ -124,16 +126,12 @@ class NoLoginHeaderView: UIView {
         
     }
     
+    @objc func moreButtonClick() {
+        moreLoginButtonClick!()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 
 }

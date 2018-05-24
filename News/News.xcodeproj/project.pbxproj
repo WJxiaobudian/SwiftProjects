@@ -31,6 +31,12 @@
 		A09C175420AE647C00D69447 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C175320AE647C00D69447 /* SettingViewController.swift */; };
 		A09C175620AE739200D69447 /* MoreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C175520AE739200D69447 /* MoreLoginViewController.swift */; };
 		A09C175820AE7C0600D69447 /* UserDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C175720AE7C0600D69447 /* UserDetail.swift */; };
+		A09C175A20AEAE4E00D69447 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C175920AEAE4E00D69447 /* Emoji.swift */; };
+		A09C175C20AEAEF000D69447 /* emojis.plist in Resources */ = {isa = PBXBuildFile; fileRef = A09C175B20AEAEF000D69447 /* emojis.plist */; };
+		A09C175F20AEAF0100D69447 /* emoji_sort.plist in Resources */ = {isa = PBXBuildFile; fileRef = A09C175D20AEAF0100D69447 /* emoji_sort.plist */; };
+		A09C176020AEAF0100D69447 /* emoji_mapping.plist in Resources */ = {isa = PBXBuildFile; fileRef = A09C175E20AEAF0100D69447 /* emoji_mapping.plist */; };
+		A09C176220AEBAD200D69447 /* Calculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C176120AEBAD200D69447 /* Calculate.swift */; };
+		A09C176420AEBD3C00D69447 /* Foundation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09C176320AEBD3C00D69447 /* Foundation+Extension.swift */; };
 		A0D4A99020ABC7D10072FE3C /* HomeNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D4A98F20ABC7D10072FE3C /* HomeNavigationView.swift */; };
 		A0D4A99320ABF4750072FE3C /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D4A99220ABF4750072FE3C /* NetworkTools.swift */; };
 		A0D4A99620ABF5E40072FE3C /* HomeNewsTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D4A99520ABF5E40072FE3C /* HomeNewsTitle.swift */; };
@@ -101,6 +107,12 @@
 		A09C175320AE647C00D69447 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A09C175520AE739200D69447 /* MoreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreLoginViewController.swift; sourceTree = "<group>"; };
 		A09C175720AE7C0600D69447 /* UserDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetail.swift; sourceTree = "<group>"; };
+		A09C175920AEAE4E00D69447 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		A09C175B20AEAEF000D69447 /* emojis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojis.plist; sourceTree = "<group>"; };
+		A09C175D20AEAF0100D69447 /* emoji_sort.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = emoji_sort.plist; sourceTree = "<group>"; };
+		A09C175E20AEAF0100D69447 /* emoji_mapping.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = emoji_mapping.plist; sourceTree = "<group>"; };
+		A09C176120AEBAD200D69447 /* Calculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate.swift; sourceTree = "<group>"; };
+		A09C176320AEBD3C00D69447 /* Foundation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extension.swift"; sourceTree = "<group>"; };
 		A0D4A98F20ABC7D10072FE3C /* HomeNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationView.swift; sourceTree = "<group>"; };
 		A0D4A99220ABF4750072FE3C /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		A0D4A99520ABF5E40072FE3C /* HomeNewsTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsTitle.swift; sourceTree = "<group>"; };
@@ -239,7 +251,10 @@
 		A0928DF920ABB7E200A6BAD2 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				A09C175B20AEAEF000D69447 /* emojis.plist */,
 				A0928E1620ABB9D600A6BAD2 /* Const.swift */,
+				A09C175E20AEAF0100D69447 /* emoji_mapping.plist */,
+				A09C175D20AEAF0100D69447 /* emoji_sort.plist */,
 				A0928E1820ABB9F000A6BAD2 /* Theme */,
 			);
 			path = Other;
@@ -377,6 +392,9 @@
 				A0D4A99220ABF4750072FE3C /* NetworkTools.swift */,
 				A0D4A99920AC12480072FE3C /* NewsTitleTable.swift */,
 				A0D4A99F20AC278D0072FE3C /* UIKit+Extension.swift */,
+				A09C175920AEAE4E00D69447 /* Emoji.swift */,
+				A09C176120AEBAD200D69447 /* Calculate.swift */,
+				A09C176320AEBD3C00D69447 /* Foundation+Extension.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -537,7 +555,10 @@
 			files = (
 				A0928E1B20ABB9F000A6BAD2 /* default_theme.plist in Resources */,
 				A0928E1C20ABB9F000A6BAD2 /* night_theme.plist in Resources */,
+				A09C175F20AEAF0100D69447 /* emoji_sort.plist in Resources */,
 				A0928DD420ABB7A800A6BAD2 /* LaunchScreen.storyboard in Resources */,
+				A09C176020AEAF0100D69447 /* emoji_mapping.plist in Resources */,
+				A09C175C20AEAEF000D69447 /* emojis.plist in Resources */,
 				A0928DD120ABB7A800A6BAD2 /* Assets.xcassets in Resources */,
 				A0928DCF20ABB7A700A6BAD2 /* Main.storyboard in Resources */,
 			);
@@ -631,10 +652,12 @@
 				A0D4A99E20AC25F10072FE3C /* ChannelRecommendCell.swift in Sources */,
 				A0928E1020ABB93D00A6BAD2 /* HeadLineController.swift in Sources */,
 				A09C174F20AE62EC00D69447 /* GroupItem.swift in Sources */,
+				A09C176420AEBD3C00D69447 /* Foundation+Extension.swift in Sources */,
 				A0D4A9BB20AD891C0072FE3C /* MyOtherCell.swift in Sources */,
 				A0D4A9B020AD59D30072FE3C /* NoLoginHeaderView.swift in Sources */,
 				A0928E0420ABB8B500A6BAD2 /* BaseTabBarController.swift in Sources */,
 				A09C175820AE7C0600D69447 /* UserDetail.swift in Sources */,
+				A09C176220AEBAD200D69447 /* Calculate.swift in Sources */,
 				A0D4A9B220AD715F0072FE3C /* FirstSectionCell.swift in Sources */,
 				A0928E0A20ABB91200A6BAD2 /* VideoController.swift in Sources */,
 				A0D4A99C20AC22A90072FE3C /* AddCategoryCell.swift in Sources */,
@@ -648,6 +671,7 @@
 				A0928DCA20ABB7A700A6BAD2 /* AppDelegate.swift in Sources */,
 				A0D4A99320ABF4750072FE3C /* NetworkTools.swift in Sources */,
 				A0928E0220ABB8A000A6BAD2 /* BaseNavigationController.swift in Sources */,
+				A09C175A20AEAE4E00D69447 /* Emoji.swift in Sources */,
 				A0D4A9B920AD88D70072FE3C /* UserDetailController.swift in Sources */,
 				A09C175620AE739200D69447 /* MoreLoginViewController.swift in Sources */,
 				A0928E0720ABB8FB00A6BAD2 /* HomeController.swift in Sources */,

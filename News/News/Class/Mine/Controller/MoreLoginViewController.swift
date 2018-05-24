@@ -14,6 +14,7 @@ class MoreLoginViewController: AnimatableModalViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        self.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
     }
 

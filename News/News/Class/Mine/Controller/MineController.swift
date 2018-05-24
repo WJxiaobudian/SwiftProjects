@@ -48,16 +48,26 @@ class MineController: UITableViewController {
                 self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
             })
         }
-        /// 更多按钮点击
-        headerView.moreLoginButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                let moreLoginVC = MoreLoginViewController()
-                moreLoginVC.modalSize = (width: .full, height: .custom(size: Float(KscreenHeight - (IsIphoneX ? 44 : 20))))
-                print("🍎")
-                self!.present(moreLoginVC, animated: true, completion: nil)
-            })
-            .disposed(by: disposeBag)
+        
+        headerView.moreLoginButtonClick = {
+            let moreLoginVC = MoreLoginViewController()
+            moreLoginVC.modalSize = (width: .full, height: .custom(size: Float(KscreenHeight - (IsIphoneX ? 44 : 20))))
+            print("🍎")
+            moreLoginVC.backgroundColor = UIColor.red
+            self.present(moreLoginVC, animated: true, completion: nil)
+        }
+        
+//        /// 更多按钮点击
+//        headerView.moreLoginButton.rx.tap
+//            .subscribe(onNext: { [weak self] in
+//                let moreLoginVC = MoreLoginViewController()
+//                moreLoginVC.modalSize = (width: .full, height: .custom(size: Float(KscreenHeight - (IsIphoneX ? 44 : 20))))
+//                print("🍎")
+//                self!.present(moreLoginVC, animated: true, completion: nil)
+//            })
+//            .disposed(by: disposeBag)
     }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -97,23 +107,23 @@ class MineController: UITableViewController {
     // cell
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && indexPath.row == 0 {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "FirstSectionCell", for: indexPath) as! FirstSectionCell
-        if cell.isEqual(nil) {
-            cell = FirstSectionCell(style: .default, reuseIdentifier: "FirstSectionCell")
-        }
+            var cell = tableView.dequeueReusableCell(withIdentifier: "FirstSectionCell", for: indexPath) as! FirstSectionCell
+            if cell.isEqual(nil) {
+                cell = FirstSectionCell(style: .default, reuseIdentifier: "FirstSectionCell")
+            }
             cell.myCellModel = sections[indexPath.section][indexPath.row]
             cell.collectionView.isHidden = (concerns.count == 0 || concerns.count == 1)
             if concerns.count == 1 { cell.myConcern = concerns[0] }
             if concerns.count > 1 { cell.myConcerns = concerns }
             
-
             cell.myConcernSelected = { [weak self] in
                 let userDetailVC = UserDetailController()
                 userDetailVC.userId = $0.userid
+                print("\(userDetailVC.userId)")
                 self?.navigationController?.pushViewController(userDetailVC, animated: true)
                 }
             return cell
-        }
+            }
         let cell = MyOtherCell(style: .default, reuseIdentifier: "MyOtherCell")
         let myCellModel = sections[indexPath.section][indexPath.row]
         cell.leftLabel.text = myCellModel.text
