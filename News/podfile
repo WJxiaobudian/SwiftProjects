@@ -15,5 +15,7 @@ pod "RxSwift"
 pod "RxCocoa"
 pod "SQLite.swift"
 pod "Kingfisher"
+pod "SVProgressHUD"
+pod "MJRefresh"
 
 end

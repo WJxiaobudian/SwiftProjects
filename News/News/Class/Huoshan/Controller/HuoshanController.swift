@@ -7,29 +7,52 @@
 //
 
 import UIKit
-
+import SGPagingView
 class HuoshanController: UIViewController {
+    
+    var pageContentView: SGPageContentView?
+    
+    private lazy var navigationBar = HuoshanNavigationBar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.gray
         // Do any additional setup after loading the view.
+        
+        setupUI()
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+
+extension HuoshanController {
+    private func setupUI() {
+        view.theme_backgroundColor = "colors.cellBackgroundColor"
+        navigationItem.titleView = navigationBar
+        MyThemeStyle.setupNavigationBarStyle(self, UserDefaults.standard.bool(forKey: IsNight))
+        NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked(notification:)), name: NSNotification.Name(rawValue: "dayOrNightButtonClicked"), object: nil)
+        NetworkTools.loadSmallVideoCategories {
+            self.navigationBar.titleNames = $0.compactMap({$0.name})
+            _ = $0.compactMap({ (newsTitle) -> () in
+                let categoryVC = HuoshanCategoryController()
+                categoryVC.newsTitle = newsTitle
+                self.addChildViewController(categoryVC)
+                
+            })
+            
+            self.pageContentView = SGPageContentView(frame: self.view.bounds, parentVC: self, childVCs: self.childViewControllers)
+            self.pageContentView!.delegatePageContentView = self as? SGPageContentViewDelegate
+            self.view.addSubview(self.pageContentView!)
+        
+        }
+        navigationBar.pageTitleViewSelected = {[weak self] in
+            self?.pageContentView?.setPageContentViewCurrentIndex($0)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    /// 接收到了按钮点击的通知
+    @objc func receiveDayOrNightButtonClicked(notification: Notification) {
+        // 判断是否是夜间
+        MyThemeStyle.setupNavigationBarStyle(self, UserDefaults.standard.bool(forKey: IsNight))
     }
-    */
-
 }

@@ -28,7 +28,7 @@ let IsNight = "isNight"
 
 let TopTabButtonWidth:CGFloat = KscreenWidth * 0.2
 let TopTabIndicatorWidth:CGFloat = 40
-let TopTabIndicationHeight:CGFloat = 2
+let TopTabIndicatorHeight:CGFloat = 2
 
 let MyPresentationControllerDismiss = "MyPresentationControllerDismiss"
 let NavigationBarAttentionButtonClicked = "NavigationBarAttentionButtonClicked"
