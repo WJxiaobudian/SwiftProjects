@@ -17,5 +17,6 @@ pod "SQLite.swift"
 pod "Kingfisher"
 pod "SVProgressHUD"
 pod "MJRefresh"
+pod "BMPlayer"
 
 end
